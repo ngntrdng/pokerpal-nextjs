@@ -1,10 +1,10 @@
 export const defaultLocale = 'en';
 
-export const timeZone = 'Europe/Amsterdam';
+export const timeZone = 'Asia/Bankok';
 
-export const locales = [defaultLocale, 'ru'] as const;
+export const locales = [defaultLocale, 'vn'] as const;
 
 export const localesMap = [
   { key: 'en', title: 'English' },
-  { key: 'ru', title: 'Русский' },
+  { key: 'vn', title: 'Việt Nam' },
 ];
