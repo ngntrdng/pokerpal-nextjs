@@ -12,7 +12,7 @@ export default function Home() {
   const [isTelegramEnv, setIsTelegramEnv] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
+    if (typeof window !== 'undefined' && (window as any).Telegram?.WebApp) {
       setIsTelegramEnv(true);
       initTelegramApp();
     } else {
@@ -23,7 +23,7 @@ export default function Home() {
 
   const initTelegramApp = () => {
     try {
-      const tg = window.Telegram.WebApp;
+      const tg = (window as any).Telegram.WebApp;
       
       tg.expand();
       
@@ -60,16 +60,16 @@ export default function Home() {
   };
 
   const sendDataToBot = () => {
-    if (window.Telegram?.WebApp) {
-      const tg = window.Telegram.WebApp;
+    if ((window as any).Telegram?.WebApp) {
+      const tg = (window as any).Telegram.WebApp;
       tg.sendData(JSON.stringify(userInfo));
       tg.close();
     }
   };
 
   const showAlert = (message) => {
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.showAlert(message);
+    if ((window as any).Telegram?.WebApp) {
+      (window as any).Telegram.WebApp.showAlert(message);
     } else {
       alert(message);
     }
