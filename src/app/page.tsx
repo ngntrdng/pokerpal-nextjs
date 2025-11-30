@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 export default function Home() {
   const [userInfo, setUserInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any | null>(null);
   const [isTelegramEnv, setIsTelegramEnv] = useState(false);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function Home() {
       tg.setBackgroundColor('#f3f4f6');
       
     } catch (err) {
-      setError('Error when initing :' + err.message);
+      setError('Error when initing');
       setIsLoading(false);
     }
   };
@@ -64,14 +64,6 @@ export default function Home() {
       const tg = (window as any).Telegram.WebApp;
       tg.sendData(JSON.stringify(userInfo));
       tg.close();
-    }
-  };
-
-  const showAlert = (message) => {
-    if ((window as any).Telegram?.WebApp) {
-      (window as any).Telegram.WebApp.showAlert(message);
-    } else {
-      alert(message);
     }
   };
 
